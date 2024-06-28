@@ -1,0 +1,6 @@
+1. npm init
+2. create server.js
+3. install express
+4. create routes
+5. create controllers
+
