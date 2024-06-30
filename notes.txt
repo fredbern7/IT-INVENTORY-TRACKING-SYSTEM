@@ -3,4 +3,26 @@
 3. install express
 4. create routes
 5. create controllers
+6. push to github and render
+7. add mongodb link to render environment
+8. create controllers for create, update, delete
+    - install bodyParser - npm i body-parser
+    - add in bodyParser.jason() function in the server.js
+    - insertOne(user), replaceOne({ _id: userId})
+    - (response.acknowledged > 0), (response.modifiedCount > 0)
+9. Testing the functions
+    - install rest client
+    - create routes.rest
+10. Create a swagger
+    - install swagger
+        - npm i swagger-ui-express
+        - npm i swagger-autogen
+    - run swagger.js
+        - node swagger.js
+11. Add validator
+    - npm install validatorjs
+12. Add Error Handles
+    - npm install express mongoose cors
+13. Install jslint
+    - npm i - jslint
 

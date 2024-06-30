@@ -1,0 +1,80 @@
+### Get all users
+GET http://localhost:3000/users
+
+### Get one User
+GET http://localhost:3000/users/667ea8032a1ad2f3518709c2
+
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "June",
+  "middleName": "",
+  "lastName": "Test",
+  "email": "jtest@testing.com",
+  "password": "oaerjasdur33l4jaefiewjd"
+}
+
+### Update user
+PUT http://localhost:3000/users/6680f96938555be101b3d34b HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Berny",
+  "middleName": "tui",
+  "lastName": "Tui",
+  "email": "btui@testing.com",
+  "password": "oaerjasdur33l4jaefiewjd"
+}
+
+### Delete user
+DELETE  http://localhost:3000/users/6680f96838555be101b3d34a
+
+
+
+### Get all items
+GET http://localhost:3000/items
+
+### Get one item
+GET http://localhost:3000/items/667ea5782a1ad2f3518709c0 HTTP/1.1
+
+### Create item
+POST http://localhost:3000/items HTTP/1.1
+Content-Type: application/json
+
+{
+  "itemType": "Computer",
+  "description": "MiniDesk i9 256gb",
+  "price": "1000",
+  "tagNumber": "001013a",
+  "receivedDate": "11/24/23",
+  "receivedBy": "Johnny Debt",
+  "vendor": "Micro PC",
+  "poNumber": "0054488"
+}
+
+### Update item
+PUT http://localhost:3000/items/667ea5782a1ad2f3518709c0 HTTP/1.1
+Content-Type: application/json
+
+{  
+  "itemType": "Computer",
+  "description": "MiniDesk i9 256gb",
+  "price": "1000",
+  "tagNumber": "001013a",
+  "receivedDate": "11/24/23",
+  "receivedBy": "Johnny Debt",
+  "vendor": "Micro PC",
+  "poNumber": "0054488"
+  }
+
+
+### Delete item
+DELETE http://localhost:3000/items/6680db26563739984e202685 HTTP/1.1
+
+### Get all items
+GET http://localhost:3000/items
+
+
+
