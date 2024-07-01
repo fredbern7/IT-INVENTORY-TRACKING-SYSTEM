@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
 const port = process.env.PORT || 3000;
+
 const app = express();
 
 //create a route
@@ -18,11 +19,12 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use('/', require('./routes'));
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err, origin) => {
-    console.error(`Caught exception: ${err}\nException origin: ${origin}`);
+    console.error(`Caught exception: ${err}\n` + `Exception origin: ${origin}`);
 });
 
 // Handle unhandled promise rejections

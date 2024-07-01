@@ -27,6 +27,7 @@ const getSingle = async (req, res) => {
         .getDatabase()
         .collection('items')
         .findOne({ _id: itemId })
+    console.log(result);
     if (result) {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result);
@@ -53,6 +54,7 @@ const createItem = async (req, res) => {
         .getDatabase()
         .collection('items')
         .insertOne(item);
+    console.log(response);
     if (response.acknowledged) {
         res.status(201).send();
     } else {
@@ -99,6 +101,7 @@ const deleteItem = async (req, res) => {
           .getDatabase()
           .collection('items')
           .deleteOne({ _id: itemId });
+        console.log(response);
         if (response.deletedCount > 0) {
           res.status(204).send();
         } else {

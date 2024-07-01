@@ -27,6 +27,7 @@ const getSingle = async (req, res) => {
       .getDatabase()
       .collection('users')
       .findOne({ _id: userId });
+    console.log(result);
     if (result) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(result);
@@ -52,6 +53,7 @@ const createUser = async (req, res) => {
       .getDatabase()
       .collection('users')
       .insertOne(user);
+    console.log(response);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -75,22 +77,18 @@ const updateUser = async (req, res) => {
     email: req.body.email,
     password: req.body.password
   };
-  try {
-    const response = await mongodb
+
+  const response = await mongodb
       .getDatabase()
       .collection('users')
       .replaceOne({ _id: userId }, user);
+    console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send();
-    } 
-    if(!user) {
-        return res.status(404).json({ message: 'User not found.' });
-    } else {
-      res.status(500).json({ message: 'Some error occurred while updating the user.' });
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+    console.log(response);
+      } else {
+        res.status(500).json({ message: 'Some error occurred while updating the user.' });
+      }
 };
 
 const deleteUser = async (req, res) => {
@@ -104,13 +102,14 @@ const deleteUser = async (req, res) => {
       .getDatabase()
       .collection('users')
       .deleteOne({ _id: userId });
+    console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();
     } else {
       return res.status(404).json({ message: 'User not found.' });
     }
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message || 'Some error occurred while deleting the user.' });
   }
 };
 

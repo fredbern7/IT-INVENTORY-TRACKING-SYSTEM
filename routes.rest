@@ -2,31 +2,31 @@
 GET http://localhost:3000/users
 
 ### Get one User
-GET http://localhost:3000/users/667ea8032a1ad2f3518709c2
+GET http://localhost:3000/users/6680e188e2bd3b3ba370d957
 
 ### Create user
 POST http://localhost:3000/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "firstName": "June",
+  "firstName": "Juna",
   "middleName": "",
-  "lastName": "Test",
-  "email": "jtest@testing.com",
+  "lastName": "Testa",
+  "email": "jtesta@testing.com",
   "password": "oaerjasdur33l4jaefiewjd"
 }
 
 ### Update user
-PUT http://localhost:3000/users/6680f96938555be101b3d34b HTTP/1.1
+PUT http://localhost:3000/users/6680e188e2bd3b3ba370d957 HTTP/1.1
 Content-Type: application/json
 
-{
-  "firstName": "Berny",
-  "middleName": "tui",
-  "lastName": "Tui",
-  "email": "btui@testing.com",
+  {
+  "firstName": "Juned",
+  "middleName": "",
+  "lastName": "Test",
+  "email": "jtest@testing.com",
   "password": "oaerjasdur33l4jaefiewjd"
-}
+  }
 
 ### Delete user
 DELETE  http://localhost:3000/users/6680f96838555be101b3d34a
@@ -61,8 +61,8 @@ Content-Type: application/json
 {  
   "itemType": "Computer",
   "description": "MiniDesk i9 256gb",
-  "price": "1000",
-  "tagNumber": "001013a",
+  "price": "1200",
+  "tagNumber": "002013",
   "receivedDate": "11/24/23",
   "receivedBy": "Johnny Debt",
   "vendor": "Micro PC",

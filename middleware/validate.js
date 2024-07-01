@@ -29,7 +29,7 @@ const saveUser = validate({
   firstName: 'required|string',
   middleName: 'string',
   lastName: 'required|string',
-  email: 'required|email|email_exists',
+  email: 'required|email',
   password: 'required|string|min:8',
 });
 
