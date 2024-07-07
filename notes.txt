@@ -24,5 +24,9 @@
 12. Add Error Handles
     - npm install express mongoose cors
 13. Install jslint
-    - npm i - jslint
+    - npm i jslint
+14. oath
+    - npm i passport
+    - npm i express-session
+    - npm i passport-github2
 

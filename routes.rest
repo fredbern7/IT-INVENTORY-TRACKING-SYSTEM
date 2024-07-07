@@ -2,7 +2,7 @@
 GET http://localhost:3000/users
 
 ### Get one User
-GET http://localhost:3000/users/6680e188e2bd3b3ba370d957
+GET http://localhost:3000/users/6682a29ff78f9424059186f2
 
 ### Create user
 POST http://localhost:3000/users HTTP/1.1
@@ -12,7 +12,7 @@ Content-Type: application/json
   "firstName": "Juna",
   "middleName": "",
   "lastName": "Testa",
-  "email": "jtesta@testing.com",
+  "email": "jtesta@testing2.com",
   "password": "oaerjasdur33l4jaefiewjd"
 }
 
@@ -21,15 +21,15 @@ PUT http://localhost:3000/users/6680e188e2bd3b3ba370d957 HTTP/1.1
 Content-Type: application/json
 
   {
-  "firstName": "Juned",
+  "firstName": "Juna",
   "middleName": "",
-  "lastName": "Test",
-  "email": "jtest@testing.com",
+  "lastName": "Testa",
+  "email": "jdebt@testing.com",
   "password": "oaerjasdur33l4jaefiewjd"
   }
 
 ### Delete user
-DELETE  http://localhost:3000/users/6680f96838555be101b3d34a
+DELETE  http://localhost:3000/users/6680e188e2bd3b3ba370d957
 
 
 
