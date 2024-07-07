@@ -11,6 +11,17 @@
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/logout": {
       "get": {
         "description": "",
