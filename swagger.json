@@ -5,9 +5,10 @@
     "description": "Contact Api",
     "version": "1.0.0"
   },
-  "host": "it-inventory-tracking-system.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {

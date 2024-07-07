@@ -30,3 +30,5 @@
     - npm i express-session
     - npm i passport-github2
 
+15. http://localhost:3000/github/callback
+
