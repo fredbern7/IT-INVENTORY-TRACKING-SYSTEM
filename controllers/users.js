@@ -1,5 +1,6 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const bcrypt = require('bcrypt');
 
 const getAll = async (req, res) => {
   //#swagger-tags-['Users']
@@ -51,6 +52,7 @@ const createUser = async (req, res) => {
 
   try {
     user.password = await bcrypt.hash(user.password, 10);
+    console.log(`Hashed Password: ${user.password}`); // Debug log
     const response = await mongodb
       .getDatabase()
       .collection('users')
@@ -82,6 +84,7 @@ const updateUser = async (req, res) => {
 
   try {
     user.password = await bcrypt.hash(user.password, 10);
+    console.log(`Hashed Password: ${user.password}`); // Debug log
     const response = await mongodb
       .getDatabase()
       .collection('users')
@@ -93,7 +96,7 @@ const updateUser = async (req, res) => {
       res.status(500).json({ message: 'Some error occurred while updating the user.' });
     }
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status 500).json({ message: err.message });
   }
 };
 
