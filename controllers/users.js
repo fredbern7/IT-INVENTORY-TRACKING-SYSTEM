@@ -1,6 +1,5 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
-const bcrypt = require('bcrypt');
 
 const getAll = async (req, res) => {
   //#swagger-tags-['Users']
@@ -42,18 +41,16 @@ const getSingle = async (req, res) => {
 
 const createUser = async (req, res) => {
   //#swagger-tags-['Users']
-  const { firstName, middleName, lastName, email, password } = req.body;
+  const user = {
+    firstName: req.body.firstName,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password
+  };
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = {
-      firstName,
-      middleName,
-      lastName,
-      email,
-      password: hashedPassword
-    };
-
+    user.password = await bcrypt.hash(user.password, 10);
     const response = await mongodb
       .getDatabase()
       .collection('users')
@@ -74,20 +71,17 @@ const updateUser = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json('Must use a valid user id to update a user.');
   }
-
   const userId = new ObjectId(req.params.id);
-  const { firstName, middleName, lastName, email, password } = req.body;
+  const user = {
+    firstName: req.body.firstName,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password
+  };
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = {
-      firstName,
-      middleName,
-      lastName,
-      email,
-      password: hashedPassword
-    };
-
+    user.password = await bcrypt.hash(user.password, 10);
     const response = await mongodb
       .getDatabase()
       .collection('users')
