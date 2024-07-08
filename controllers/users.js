@@ -96,9 +96,10 @@ const updateUser = async (req, res) => {
       res.status(500).json({ message: 'Some error occurred while updating the user.' });
     }
   } catch (err) {
-    res.status 500).json({ message: err.message });
+    res.status(500).json({ message: err.message }); // Corrected syntax here
   }
 };
+
 
 const deleteUser = async (req, res) => {
   //#swagger-tags-['Users']
