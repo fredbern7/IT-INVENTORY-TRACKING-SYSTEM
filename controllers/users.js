@@ -52,7 +52,7 @@ const createUser = async (req, res) => {
 
   try {
     user.password = await bcrypt.hash(user.password, 10);
-    console.log(`Hashed Password: ${user.password}`); // Debug log
+    console.log(`Hashed Password: ${user.password}`);
     const response = await mongodb
       .getDatabase()
       .collection('users')
