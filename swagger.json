@@ -5,7 +5,7 @@
     "description": "Inventory Api",
     "version": "1.0.0"
   },
-  "host": "it-inventory-tracking-system.onrender.com/",
+  "host": "it-inventory-tracking-system.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

@@ -5,8 +5,8 @@ const doc = {
         title: 'Inventory Api',
         description: 'Inventory Api'
     },
-    host: 'localhost:3000',
-    schemes: ['http', 'https']
+    host: 'it-inventory-tracking-system.onrender.com',
+    schemes: ['https']
 };
 
 const outputFile = './swagger.json';
