@@ -5,10 +5,9 @@
     "description": "Contact Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "it-inventory-tracking-system.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -51,16 +50,6 @@
         "responses": {
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
