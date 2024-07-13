@@ -1,6 +1,8 @@
+
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 const bcrypt = require('bcrypt');
+
 
 const getAll = async (req, res) => {
   //#swagger-tags-['Users']
@@ -41,23 +43,21 @@ const getSingle = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  //#swagger-tags-['Users']
   const user = {
     firstName: req.body.firstName,
     middleName: req.body.middleName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    role: req.body.role || 'user'
   };
 
   try {
     user.password = await bcrypt.hash(user.password, 10);
-    console.log(`Hashed Password: ${user.password}`);
     const response = await mongodb
       .getDatabase()
       .collection('users')
       .insertOne(user);
-    console.log(response);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -67,6 +67,7 @@ const createUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 const updateUser = async (req, res) => {
   //#swagger-tags-['Users']
@@ -79,7 +80,8 @@ const updateUser = async (req, res) => {
     middleName: req.body.middleName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    role: req.body.role || 'user'
   };
 
   try {
@@ -123,10 +125,38 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await mongodb.getDatabase().collection('users').findOne({ email });
+
+    if (!user) {
+        console.log("User not found"); // Debugging statement
+        return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+        console.log("Invalid password"); // Debugging statement
+        return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    req.session.user = user; // Assuming you're storing the whole user object in the session
+    console.log("User signed in", user); // Debugging statement
+    res.status(200).json({ message: "Signed in successfully" });
+} catch (error) {
+    console.log("Error during signin", error); // Debugging statement
+    res.status(500).json({ message: "Internal server error" });
+}
+};
+
 module.exports = {
   getAll,
   getSingle,
   createUser,
   updateUser,
-  deleteUser
-};
+  deleteUser,
+  loginUser
+}

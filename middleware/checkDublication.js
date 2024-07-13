@@ -41,7 +41,29 @@ const checkDuplicateTagNumber = async (req, res, next) => {
   }
 };
 
+const checkDuplicateLocation = async (req, res, next) => {
+  try {
+    const { tagNumber } = req.body;
+    const itemId = req.params.id ? new ObjectId(req.params.id) : null;
+    
+    const item = await mongodb
+      .getDatabase()
+      .collection('items')
+      .findOne({ tagNumber: tagNumber });
+
+    if (item && (!itemId || item._id.toString() !== itemId.toString())) {
+      return res.status(400).json({ message: 'Tag Number already been used' });
+    }
+
+    next();
+  } catch (err) {
+    res.status(500).json({ message: 'Server error while checking Tag Number' });
+  }
+};
+
+
 module.exports = {
   checkDuplicateEmail,
-  checkDuplicateTagNumber
+  checkDuplicateTagNumber,
+  checkDuplicateLocation
 };

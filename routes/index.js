@@ -1,21 +1,20 @@
 const express = require('express');
-const passport = require('passport');
 const router = express.Router();
+const userController = require('../controllers/users');
+
 router.use('/', require('./swagger'));
-
-// router.get('/', (req, res) => {
-//     //#swagger.tags-['Hello World']
-//     res.send('Welcome to Project2..');
-// });
-
 router.use('/users', require('./users'));
 router.use('/items', require('./items'));
+router.use('/deviceUser', require('./deviceUser'));
+router.use('/location', require('./locations'));
 
-router.use('/login', passport.authenticate('github'), (req, res) => {});
+router.post('/login', userController.loginUser);
 
-router.get('/logout', function(req, res, next) {
-    req.logout(function(err) {
-        if (err) { return next(err); }
+router.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: 'Failed to logout' });
+        }
         res.redirect('/');
     });
 });
