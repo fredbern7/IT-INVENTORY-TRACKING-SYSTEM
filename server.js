@@ -27,7 +27,7 @@ app
     .use('/', require('./routes'));
 
 app.get('/', (req, res) => {
-    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.firstName}` : "Logged Out");
+    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.firstName} ${req.session.user.lastName}` : "Logged Out");
 });
 
 mongodb.initDb((err) => {
