@@ -21,7 +21,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "btui@testing.com",
+  "email": "btoe@testing.com",
   "password": "123Abcd11"
 }
 
