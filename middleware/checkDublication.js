@@ -43,21 +43,21 @@ const checkDuplicateTagNumber = async (req, res, next) => {
 
 const checkDuplicateLocation = async (req, res, next) => {
   try {
-    const { tagNumber } = req.body;
-    const itemId = req.params.id ? new ObjectId(req.params.id) : null;
+    const { locationName } = req.body;
+    const locationId = req.params.id ? new ObjectId(req.params.id) : null;
     
-    const item = await mongodb
+    const location = await mongodb
       .getDatabase()
-      .collection('items')
-      .findOne({ tagNumber: tagNumber });
+      .collection('Location')
+      .findOne({ locationName: locationName });
 
-    if (item && (!itemId || item._id.toString() !== itemId.toString())) {
-      return res.status(400).json({ message: 'Tag Number already been used' });
+    if (location && (!locationId || location._id.toString() !== locationId.toString())) {
+      return res.status(400).json({ message: 'This name is already been used' });
     }
 
     next();
   } catch (err) {
-    res.status(500).json({ message: 'Server error while checking Tag Number' });
+    res.status(500).json({ message: 'Server error while checking Location' });
   }
 };
 

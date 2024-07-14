@@ -33,7 +33,22 @@ const saveUser = validate({
   password: 'required|string|min:8',
 });
 
+
+const saveLocation = validate({
+  locationName: 'require|string',
+  extention: 'number'
+});
+
+const saveDeviceUser = validate({
+  firstName: 'required|string',
+  middleName: 'string',
+  lastName: 'required|string',
+  email: 'required|email',
+});
+
 module.exports = {
   saveItem,
-  saveUser
+  saveUser,
+  saveLocation,
+  saveDeviceUser
 };

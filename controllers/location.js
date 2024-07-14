@@ -45,7 +45,7 @@ const createLocation = async (req, res) => {
     extension: req.body.extension,
   };
   try {
-    const response = await mongodb.getDatabase().collection('Location').insertOne(item);
+    const response = await mongodb.getDatabase().collection('Location').insertOne(location);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
